@@ -1,32 +1,40 @@
 package com.adsplaylib
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.leadlib.LeadLib
 
 class MainActivity : AppCompatActivity() {
 
+    var referralData = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-      /*  val referralData = LeadLib.getReferData(this)
+        LeadLib.getReferData(this)
 
-        //get Values
-        val installReferrer = referralData.get("installReferrer")
-        val referrerClickTime = referralData.get("referrerClickTime")
-        val appInstallTime = referralData.get("appInstallTime")
-        val instantExperienceLaunched = referralData.get("instantExperienceLaunched")
+        Handler(Looper.getMainLooper()).postDelayed({
+            referralData = LeadLib.getRefererr()
+            Log.d("LEADLIB", "createInstance: ${referralData}")
+        }, 2000)
 
 
-        LeadLib.createInstance(
-            applicationContext,
-            installReferrer!!,
-            "Your_Device_ID",
-            "Your_IP_Address"
-        )
+        Handler(Looper.getMainLooper()).postDelayed({
 
-        LeadLib.recordEvent(installReferrer, "Your_Device_ID", "Your_Event_Name")*/
+            LeadLib.createInstance(
+                applicationContext,
+                referralData!!,
+                "Your_Device_ID",
+                "Your_IP_Address"
+            )
+
+            LeadLib.recordEvent(referralData, "Your_Device_ID", "Your_Event_Name")
+
+        }, 3000)
 
     }
 }
