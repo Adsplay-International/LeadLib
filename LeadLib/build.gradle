@@ -50,7 +50,7 @@ publishing {
             url uri("https://maven.pkg.github.com/Adsplay-International/LeadLib")
             credentials {
                 username = "Adsplay-International"
-                password = "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"
+                password = ""
             }
         }
     }
